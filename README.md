@@ -29,6 +29,7 @@ Now you can start app
 ```
 npx react-native run-android  # you can also use: npm start
 ```
+When the application first starts, it checks whether there is an existing database. You can see this control in the "HomeScreen.js" file. Then you can switch to different pages according to the operation you want to do. You can examine all the codes of the application from the "App.js" file and the files under the "pages" folder.
 
 ## Built with
 
