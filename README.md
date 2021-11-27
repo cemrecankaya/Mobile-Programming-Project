@@ -29,6 +29,7 @@ Now you can start app
 ```
 npx react-native run-android  # you can also use: npm start
 ```
+When the application first starts, it checks whether there is an existing database. You can see this control in the "HomeScreen.js" file. Then you can switch to different pages according to the operation you want to do. You can examine all the codes of the application from the "App.js" file and the files under the "pages" folder.
 
 ## Built with
 
@@ -49,4 +50,5 @@ npx react-native run-android  # you can also use: npm start
 * https://github.com/andpor/react-native-sqlite-storage
 * https://blog.logrocket.com/using-sqlite-with-react-native/
 * https://medium.com/@berkekurnaz/flutter-g%C3%BCnl%C3%BCkleri-10-shared-preferences-kavram%C4%B1-8d7682690414
-* 
+* https://ayselaydin.medium.com/android-sharedpreferences-kullan%C4%B1m%C4%B1-f24501831832
+* https://github.com/sriraman/react-native-shared-preferences
