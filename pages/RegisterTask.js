@@ -13,31 +13,31 @@ import {openDatabase} from 'react-native-sqlite-storage';
 
 var sqliteDB = openDatabase({name: 'sqlDataBase.db'});
 
-const RegisterUser = ({navigation}) => {
-  let [userName, setUserName] = useState('');
-  let [userContact, setUserContact] = useState('');
-  let [userAddress, setUserAddress] = useState('');
+const RegisterTasks = ({navigation}) => {
+  let [tasksName, setTasksName] = useState('');
+  let [tasksDate, setTasksDate] = useState('');
+  let [tasksDescp, setTasksDescp] = useState('');
 
-  let register_user = () => {
-    console.log(userName, userContact, userAddress);
+  let register_tasks = () => {
+    console.log(tasksName, tasksDate, tasksDescp);
 
-    if (!userName) {
+    if (!tasksName) {
       alert('İsim Giriniz');
       return;
     }
-    if (!userContact) {
+    if (!tasksDate) {
       alert('İletişim Numarası Giriniz');
       return;
     }
-    if (!userAddress) {
+    if (!tasksDescp) {
       alert('Adres Girin');
       return;
     }
 
     sqliteDB.transaction(function (tx) {
       tx.executeSql(
-        'INSERT INTO kullanicilar (user_name, user_contact, user_address) VALUES (?,?,?)',
-        [userName, userContact, userAddress],
+        'INSERT INTO tasks (task_name, task_date, task_descp) VALUES (?,?,?)',
+        [tasksName, tasksDate, tasksDescp],
         (tx, results) => {
           console.log('Sonuçlar', results.rowsAffected);
           if (results.rowsAffected > 0) {
@@ -67,26 +67,26 @@ const RegisterUser = ({navigation}) => {
               behavior="padding"
               style={{flex: 1, justifyContent: 'space-between'}}>
               <Mytextinput
-                placeholder="İsim Giriniz"
-                onChangeText={(userName) => setUserName(userName)}
+                placeholder="Proje İsim Giriniz"
+                onChangeText={(tasksName) => setTasksName(tasksName)}
                 style={{padding: 10}}
               />
               <Mytextinput
-                placeholder="İletişim Numarası Giriniz"
-                onChangeText={(userContact) => setUserContact(userContact)}
+                placeholder="Proje Tarih Giriniz (ör:12/13/2021)"
+                onChangeText={(tasksDate) => setTasksDate(tasksDate)}
                 maxLength={10}
                 keyboardType="numeric"
                 style={{padding: 10}}
               />
               <Mytextinput
-                placeholder="Adres Giriniz"
-                onChangeText={(userAddress) => setUserAddress(userAddress)}
+                placeholder="Proje Açıklaması Giriniz"
+                onChangeText={(tasksDescp) => setTasksDescp(tasksDescp)}
                 maxLength={225}
                 numberOfLines={5}
                 multiline={true}
                 style={{textAlignVertical: 'top', padding: 10}}
               />
-              <Mybutton title="Kayıdı Ekle!" customClick={register_user} />
+              <Mybutton title="Kayıdı Ekle!" customClick={register_tasks} />
             </KeyboardAvoidingView>
           </ScrollView>
         </View>
@@ -95,4 +95,4 @@ const RegisterUser = ({navigation}) => {
   );
 };
 
-export default RegisterUser;
+export default RegisterTasks;

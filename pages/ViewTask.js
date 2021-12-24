@@ -6,24 +6,24 @@ import {openDatabase} from 'react-native-sqlite-storage';
 
 var sqliteDB = openDatabase({name: 'sqlDataBase.db'});
 
-const ViewUser = () => {
-  let [inputUserId, setInputUserId] = useState('');
-  let [userData, setUserData] = useState({});
+const ViewTask = () => {
+  let [inputTaskId, setInputTaskId] = useState('');
+  let [taskData, setTaskData] = useState({});
 
-  let searchUser = () => {
-    console.log(inputUserId);
-    setUserData({});
+  let searchTask = () => {
+    console.log(inputTaskId);
+    setTaskData({});
     sqliteDB.transaction((tx) => {
       tx.executeSql(
-        'SELECT * FROM kullanicilar where user_id = ?',
-        [inputUserId],
+        'SELECT * FROM tasks where task_id = ?',
+        [inputTaskId],
         (tx, results) => {
           var len = results.rows.length;
           console.log('len', len);
           if (len > 0) {
-            setUserData(results.rows.item(0));
+            setTaskData(results.rows.item(0));
           } else {
-            alert('Böyle bir kullanıcı yok');
+            alert('Böyle bir görev yok');
           }
         },
       );
@@ -35,16 +35,16 @@ const ViewUser = () => {
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <View style={{flex: 1}}>
           <Mytextinput
-            placeholder="Kullanıcı id girin"
-            onChangeText={(inputUserId) => setInputUserId(inputUserId)}
+            placeholder="Görev id girin"
+            onChangeText={(inputTaskId) => setInputTaskId(inputTaskId)}
             style={{padding: 10}}
           />
-          <Mybutton title="Kullanıcı Ara" customClick={searchUser} />
+          <Mybutton title="Kullanıcı Ara" customClick={searchTask} />
           <View style={{marginLeft: 35, marginRight: 35, marginTop: 10}}>
-            <Text>Kullanıcı Id: {userData.user_id}</Text>
-            <Text>Kullanıcı Adı: {userData.user_name}</Text>
-            <Text>Kullanıcı Numarası: {userData.user_contact}</Text>
-            <Text>Kullanıcı Adresi: {userData.user_address}</Text>
+            <Text>Proje ID: {taskData.task_id}</Text>
+            <Text>Proje İsim: {taskData.task_name}</Text>
+            <Text>Proje Tarih: {taskData.task_date}</Text>
+            <Text>Proje Açıklaması: {taskData.task_descp}</Text>
           </View>
         </View>
       </View>
@@ -52,4 +52,4 @@ const ViewUser = () => {
   );
 };
 
-export default ViewUser;
+export default ViewTask;

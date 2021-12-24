@@ -4,12 +4,12 @@ import { openDatabase } from 'react-native-sqlite-storage';
 
 var sqliteDB = openDatabase({ name: 'sqlDataBase.db' });
 
-const ViewAllUser = () => {
+const ViewAllTask = () => {
   let [flatListItems, setFlatListItems] = useState([]);
 
   useEffect(() => {
     sqliteDB.transaction((tx) => {
-      tx.executeSql('SELECT * FROM kullanicilar', [], (tx, results) => {
+      tx.executeSql('SELECT * FROM tasks', [], (tx, results) => {
         var temp = [];
         for (let i = 0; i < results.rows.length; ++i)
           temp.push(results.rows.item(i));
@@ -29,12 +29,12 @@ const ViewAllUser = () => {
   let listItemView = (item) => {
     return (
       <View
-        key={item.user_id}
+        key={item.Task_id}
         style={{ backgroundColor: 'white', padding: 20 }}>
-        <Text>Id: {item.user_id}</Text>
-        <Text>İsim: {item.user_name}</Text>
-        <Text>İletişim: {item.user_contact}</Text>
-        <Text>Adres: {item.user_address}</Text>
+        <Text>Proje ID: {item.task_id}</Text>
+        <Text>Proje İsim: {item.task_name}</Text>
+        <Text>Proje Tarih: {item.task_date}</Text>
+        <Text>Proje Açıklaması: {item.task_descp}</Text>
       </View>
     );
   };
@@ -55,4 +55,4 @@ const ViewAllUser = () => {
   );
 };
 
-export default ViewAllUser;
+export default ViewAllTask;

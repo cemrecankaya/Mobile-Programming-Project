@@ -5,9 +5,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import HomeScreen from './pages/HomeScreen';
-import RegisterUser from './pages/RegisterUser';
-import ViewUser from './pages/ViewUser';
-import ViewAllUser from './pages/ViewAllUser';
+import RegisterTask from './pages/RegisterTask';
+import ViewTask from './pages/ViewTask';
+import ViewAllTask from './pages/ViewAllTask';
 
 const Stack = createStackNavigator();
 
@@ -31,9 +31,9 @@ const App = () => {
         />
         <Stack.Screen
           name="View"
-          component={ViewUser}
+          component={ViewTask}
           options={{
-            title: 'View User', 
+            title: 'View Task', 
             headerStyle: {
               backgroundColor: '#f4511e', 
             },
@@ -45,9 +45,9 @@ const App = () => {
         />
         <Stack.Screen
           name="ViewAll"
-          component={ViewAllUser}
+          component={ViewAllTask}
           options={{
-            title: 'View Users', 
+            title: 'View Tasks', 
             headerStyle: {
               backgroundColor: '#f4511e', 
             },
@@ -59,9 +59,9 @@ const App = () => {
         />
         <Stack.Screen
           name="Register"
-          component={RegisterUser}
+          component={RegisterTask}
           options={{
-            title: 'Register User',
+            title: 'Register Task',
             headerStyle: {
               backgroundColor: '#f4511e', 
             },
