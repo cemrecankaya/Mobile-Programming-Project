@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import HomeScreen from './pages/HomeScreen';
+import LoginScreen from './pages/LoginScreen';
 import RegisterTask from './pages/RegisterTask';
 import ViewTask from './pages/ViewTask';
 import ViewAllTask from './pages/ViewAllTask';
@@ -14,16 +15,30 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomeScreen">
+      <Stack.Navigator initialRouteName="LoginScreen">
+        <Stack.Screen
+          name="LoginScreen"
+          component={LoginScreen}
+          options={{
+            title: 'Mobil Programlama | Kalıcı Veri Yönetimi',
+            headerStyle: {
+              backgroundColor: '#f4511e',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
           options={{
             title: 'Mobil Programlama | Kalıcı Veri Yönetimi',
             headerStyle: {
-              backgroundColor: '#f4511e', 
+              backgroundColor: '#f4511e',
             },
-            headerTintColor: '#fff', 
+            headerTintColor: '#fff',
             headerTitleStyle: {
               fontWeight: 'bold',
             },
@@ -33,13 +48,13 @@ const App = () => {
           name="View"
           component={ViewTask}
           options={{
-            title: 'View Task', 
+            title: 'View Task',
             headerStyle: {
-              backgroundColor: '#f4511e', 
+              backgroundColor: '#f4511e',
             },
-            headerTintColor: '#fff', 
+            headerTintColor: '#fff',
             headerTitleStyle: {
-              fontWeight: 'bold', 
+              fontWeight: 'bold',
             },
           }}
         />
@@ -47,13 +62,13 @@ const App = () => {
           name="ViewAll"
           component={ViewAllTask}
           options={{
-            title: 'View Tasks', 
+            title: 'View Tasks',
             headerStyle: {
-              backgroundColor: '#f4511e', 
+              backgroundColor: '#f4511e',
             },
-            headerTintColor: '#fff', 
+            headerTintColor: '#fff',
             headerTitleStyle: {
-              fontWeight: 'bold', 
+              fontWeight: 'bold',
             },
           }}
         />
@@ -63,9 +78,9 @@ const App = () => {
           options={{
             title: 'Register Task',
             headerStyle: {
-              backgroundColor: '#f4511e', 
+              backgroundColor: '#f4511e',
             },
-            headerTintColor: '#fff', 
+            headerTintColor: '#fff',
             headerTitleStyle: {
               fontWeight: 'bold',
             },
